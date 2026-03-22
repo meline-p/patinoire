@@ -1,0 +1,294 @@
+:root {
+  --color-blue: #0073c4;
+  --color-orange: #f8a638;
+  --color-light-black: #26272b;
+  --color-green: #079146;
+  --color-red: #d82b49;
+  --color-white: #fff;
+
+  --color-custom-black: #020617;
+  --color-custom-black-old: #141415;
+  --color-custom-light-grey: #c4c4c4;
+
+  --btn-padding-x: 1.5rem; /* px-6 */
+  --btn-padding-y: 0.6rem; /* py-3 */
+  --btn-radius: 0.5rem; /* rounded-lg */
+  --btn-font-weight: 700; /* font-bold */
+}
+
+/*************************************/
+/************* GENERAL ***************/
+/*************************************/
+html {
+  /* scroll-snap-type: y mandatory; */
+  scroll-behavior: smooth;
+}
+/* 
+section {
+  scroll-snap-align: start;
+} */
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: var(--color-dark-blue);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Lexend", sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+a {
+  cursor: pointer;
+}
+
+/*** TITRES ***/
+.font-h1-clamp {
+  font-size: clamp(28px, 6vw, 120px);
+  line-height: clamp(32px, 6vw, 120px);
+}
+
+.font-h2-clamp {
+  font-size: clamp(24px, 4vw, 48px);
+  line-height: clamp(32px, 4vw, 58px);
+}
+
+.font-h3-clamp {
+  font-size: clamp(20px, 3vw, 32px);
+}
+
+.font-h4-clamp {
+  font-size: clamp(18px, 3vw, 28px);
+}
+
+.font-brand-clamp {
+  font-size: clamp(24px, 2.5vw, 36px);
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/*** BOUTONS ***/
+.blue-btn {
+  display: inline-block;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-font-weight);
+  color: var(--color-custom-black);
+  background-color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+  text-transform: uppercase;
+
+  transform: scale(1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 0 10px var(--color-blue);
+}
+
+.blue-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--color-blue);
+}
+.orange-btn {
+  display: inline-block;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-font-weight);
+  color: var(--color-custom-black);
+  background-color: var(--color-orange);
+  border: 1px solid var(--color-orange);
+  text-transform: uppercase;
+
+  transform: scale(1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 0 10px var(--color-orange);
+}
+
+.orange-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--color-orange);
+}
+
+.orange-outline-btn {
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-font-weight);
+  color: var(--color-orange);
+  border: 1px solid var(--color-orange);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  transform: scale(1);
+  text-transform: uppercase;
+  box-shadow: 0 0 10px var(--color-orange);
+}
+.orange-outline-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--color-orange);
+  background-color: var(--color-orange);
+  color: var(--color-custom-black);
+}
+
+.container {
+  max-width: clamp(200px, 80vw, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/*************************************/
+/************* HERO ***************/
+/*************************************/
+
+.hero-bg-img {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(7, 7, 30, 0.95) 30%,
+      rgba(6, 13, 35, 0.8) 100%
+    ),
+    url("img/patinoire.jpg");
+  background-position: bottom 90%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}
+.hero-text-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 20%,
+    rgba(15, 23, 42, 0.5) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/*************************************/
+/************* HORAIRES & TARIFS ***************/
+/*************************************/
+
+.tarif-type {
+  background-color: var(--color-white);
+  transition: background-color 0.3s ease;
+}
+.tarif-type:hover {
+  background-color: var(--color-orange);
+}
+
+.bg-white-transparent {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.tarif-alone {
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.tarif-with-skater {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.tarif-price {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.selected-tarif {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+.non-selected-tarif {
+  background-color: var(--color-white);
+}
+.recommended {
+  border: 2px solid var(--color-orange);
+  transform: scale(1.03);
+}
+
+/*************************************/
+/************* EVENEMENTS ***************/
+/*************************************/
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.font-white {
+  color: white;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-blue);
+  /* transform: translateY(-10px); */
+}
+
+.glow-blue {
+  filter: drop-shadow(0 0 15px var(--color-blue));
+}
+.glow-orange {
+  filter: drop-shadow(0 0 15px var(--color-orange));
+}
+.glow-green {
+  filter: drop-shadow(0 0 15px var(--color-green));
+}
+.glow-red {
+  filter: drop-shadow(0 0 15px var(--color-red));
+}
+
+.glass-patin-card {
+  background: rgba(255, 255, 255, 0.01);
+  /* backdrop-filter: blur(12px); */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.glass-patin-card:hover {
+  border-color: var(--color-blue);
+}
+
+.patin-bg-img {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(7, 7, 30, 0.2) 30%,
+      rgba(6, 13, 35, 0.7) 100%
+    ),
+    url("img/patins.avif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}

@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Patinoire La Garde</title>
+
+    <!-- CSS - Tailwind - FontAwesome -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+      defer
+    ></script>
+    <link
+      rel="preload"
+      href="style.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript><link rel="stylesheet" href="style.css" /></noscript>
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+    </noscript>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-custom-black p-6 shadow-lg text-white"
+    >
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex justify-center items-center gap-4">
+          <img src="img/logo.jpg" alt="logo" class="h-10 rounded-lg" />
+          <a href="#" aria-label="La Patinoire La Garde">
+            <h2 class="font-brand-clamp">
+              La Patinoire <span class="text-blue">La Garde</span>
+            </h2>
+          </a>
+        </div>
+
+        <!-- Menu desktop -->
+        <nav class="hidden lg:flex gap-8 uppercase text-xl items-center">
+          <a class="hover:text-orange" aria-label="Événements" href="#events"
+            >Événements</a
+          >
+          <a class="hover:text-orange" aria-label="Clubs" href="#clubs"
+            >Clubs</a
+          >
+          <a class="hover:text-orange" aria-label="A propos" href="#about"
+            >A propos</a
+          >
+          <a class="hover:text-orange" aria-label="Contact" href="#contact"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Bouton desktop -->
+        <div class="hidden lg:block">
+          <a href="#schedule" class="blue-btn" aria-label="Horaires & Tarifs"
+            >Horaires & Tarifs</a
+          >
+        </div>
+
+        <!-- Hamburger mobile -->
+        <button
+          id="menu-btn"
+          class="lg:hidden text-3xl"
+          aria-label="Menu mobile"
+        >
+          <i class="fa-solid fa-bars text-dark-blue"></i>
+        </button>
+      </div>
+
+      <!-- Menu mobile -->
+      <div
+        id="mobile-menu"
+        class="hidden flex flex-col gap-6 mt-6 uppercase text-lg lg:hidden"
+      >
+        <a class="" aria-label="Événements" href="#events">Événements</a>
+        <a class="" aria-label="Clubs" href="#clubs">Clubs</a>
+        <a class="" aria-label="A propos" href="#about">A propos</a>
+        <a class="" aria-label="Contact" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="h-dvh hero-bg-img text-white text-center" id="hero">
+        <div class="container h-full w-full">
+          <div class="h-full w-full flex flex-col justify-center items-center">
+            <h1 class="font-h1-clamp mt-6">
+              Patinoire de <br /><span class="hero-text-gradient"
+                >La Garde</span
+              >
+            </h1>
+            <div class="text-xl text-custom-light-grey my-6">
+              <div class="flex justify-center items-center m-12 space-x-8">
+                <div class="h-[1px] w-20 bg-white/20"></div>
+                <p class="text-xs uppercase tracking-[0.3em] font-light">
+                  Toulon • La Garde • Le Pradet • Le Revest
+                </p>
+                <div class="h-[1px] w-20 bg-white/20"></div>
+              </div>
+              <p class="">
+                Syndicat Intercommunal pour le Maintien et la Pratique des
+                Sports de Glace.
+              </p>
+              <p>Patinage libre, clubs et événements toute l’année.</p>
+            </div>
+
+            <div class="flex justify-cente gap-4 mt-4">
+              <a href="#schedule" class="blue-btn">Voir les horaires</a>
+              <a href="#events" class="orange-outline-btn"
+                >Voir les événements</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HORAIRES + TARIFS -->
+      <section id="schedule" class="py-20 bg-custom-black text-white">
+        <div class="container">
+          <!-- horaires -->
+          <div class="text-center mx-auto py-20">
+            <div>
+              <h2 class="font-h2-clamp mb-6">
+                Horaires d'Ouverture <br />des séances publiques
+              </h2>
+              <p class="text-blue font-bold">du 12/09/25 au 08/05/26</p>
+            </div>
+
+            <!-- Bloc horaires -->
+            <div class="flex flex-col justify-center gap-6">
+              <p
+                class="text-custom-light-grey my-4 text-2xl font-bold uppercase"
+              >
+                Période scolaire
+              </p>
+
+              <div class="mx-auto w-1/2 flex justify-center flex-col">
+                <div
+                  class="glass-card flex flex-col p-6 gap-4 rounded-2xl shadow-lg h-full"
+                >
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <p>Lundi</p>
+                    <p>fermé</p>
+                  </div>
+
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <p>Mardi</p>
+                    <p>fermé</p>
+                  </div>
+
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <p>Mercredi</p>
+                    <p>14:00 - 17:00</p>
+                  </div>
+
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <p>Jeudi</p>
+                    <p>fermé</p>
+                  </div>
+
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <div class="flex items-center gap-4">
+                      <p>Vendredi</p>
+                      <i class="fa-solid fa-music text-orange"></i>
+                    </div>
+                    <p>21:00 - 00:00</p>
+                  </div>
+
+                  <div
+                    class="flex justify-between border-b border-gray-700 p-2"
+                  >
+                    <div class="flex items-center gap-4">
+                      <p>Samedi</p>
+                      <i class="fa-solid fa-music text-orange"></i>
+                    </div>
+                    <div class="flex gap-4">
+                      <p>14:00 - 17:00</p>
+                      <p>21:00 - 00:00</p>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between p-2">
+                    <p>Dimanche</p>
+                    <p>14:00 - 17:00</p>
+                  </div>
+                </div>
+
+                <div class="flex justify-center items-center gap-4 mt-4">
+                  <i class="fa-solid fa-music text-orange"></i>
+                  <p class="text-custom-light-grey">Sessions nocturnes</p>
+                </div>
+              </div>
+              <div class="flex justify-center gap-6 items-center flex-col">
+                <p class="text-orange font-bold text-xl">
+                  Evacuation de la piste 10 minutes avant la fermeture
+                </p>
+                <div>
+                  <p class="font-bold">FERMETURES EXCEPTIONNELLES</p>
+                  <p>1er mai toute la journée</p>
+                </div>
+                <div>
+                  <p class="font-bold">FERMETURE ESTIVALE</p>
+                  <p>A partir du 9 mai 2026</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- tarifs -->
+          <div class="relative py-20">
+            <div class="text-center my-6">
+              <h2 class="font-h2-clamp my-6">Nos Tarifs</h2>
+              <p class="text-custom-light-grey">
+                Sélectionnez votre profil pour comparer les options
+              </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 text-center mb-6">
+              <p class="text-orange text-xl font-bold">
+                Les enfants sont acceptés à partir de 4 ans.
+              </p>
+              <p>
+                Pour des raisons de sécurité, les enfants de moins de 4 ans ne
+                pourront pas accéder à la piste de glace.
+              </p>
+            </div>
+
+            <!-- Types de tarifs -->
+            <div class="text-light-black">
+              <div class="flex justify-center items-center gap-8">
+                <div
+                  id="tarif-types"
+                  class="w-1/3 flex flex-col justify-center gap-3 mt-6"
+                >
+                  <div>
+                    <p class="p-2 text-custom-light-grey">J'ai besoin de...</p>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Tarifs réduits</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>A partir de 14 ans</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Pass Famille</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Carte 12 entrées</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Abonnement annuel</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Accompagnement visiteur</h3>
+                  </div>
+                  <div
+                    class="tarif-type cursor-pointer p-6 shadow-xl rounded-2xl"
+                  >
+                    <h3>Pass Accompagnateur annuel</h3>
+                  </div>
+                </div>
+
+                <div
+                  id="tarifs-wrapper"
+                  class="w-2/3 overflow-hidden relative glass-card text-white rounded-2xl"
+                >
+                  <!-- TARIF 1 : TARIFS REDUITS-->
+                  <div
+                    class="tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp mb-6 text-center">
+                      Tarifs réduits*
+                    </h3>
+                    <div class="tarif-alone mb-6">
+                      <ul
+                        class="flex justify-center flex-col items-center gap-1 text-center"
+                      >
+                        <li>Enfant de 4 à 13 ans</li>
+                        <li>Etudiants</li>
+                        <li>Demandeur d'emploi</li>
+                        <li>Personne PMR</li>
+                        <li>Liciencié Club (FFSG - FFHG)</li>
+                      </ul>
+                    </div>
+                    <div
+                      class="flex flex-row justify-center items-stretch gap-4 mt-4 w-full text-center"
+                    >
+                      <!-- Carte 1 -->
+                      <div
+                        class="flex-1 min-h-0 glass-card rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-alone">Entrée seule</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            4,50€
+                          </h4>
+                          <p>Si vous avez vos propres patins</p>
+                        </div>
+                        <div class="pt-8">
+                          <a class="blue-btn !text-white" href="#"
+                            >Réserver sans patins</a
+                          >
+                        </div>
+                      </div>
+
+                      <!-- Carte 2 -->
+                      <div
+                        class="flex-1 min-h-0 bg-white text-light-black rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-with-skater">Pack Entrée + Patins</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            7,50€
+                          </h4>
+                          <p>Location d'une paire incluse</p>
+                        </div>
+                        <a class="orange-btn mt-2" href="#">
+                          Réserver avec patins
+                        </a>
+                      </div>
+                    </div>
+                    <p class="pt-6 text-xs tarif-alone text-center">
+                      *Sous couvert de justificatif
+                    </p>
+                  </div>
+                  <!-- TARIF 2 : A PARTIR DE 14 ANS-->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp mb-6 text-center">
+                      A partir de 14 ans
+                    </h3>
+                    <div
+                      class="flex flex-row justify-center items-stretch gap-4 mt-4 w-full text-center"
+                    >
+                      <!-- Carte 1 -->
+                      <div
+                        class="flex-1 min-h-0 glass-card rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-alone">Entrée seule</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            6,50€
+                          </h4>
+                          <p>Si vous avez vos propres patins</p>
+                        </div>
+                        <div class="pt-8">
+                          <a class="blue-btn !text-white" href="#"
+                            >Réserver sans patins</a
+                          >
+                        </div>
+                      </div>
+
+                      <!-- Carte 2 -->
+                      <div
+                        class="flex-1 min-h-0 bg-white text-light-black rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-with-skater">Pack Entrée + Patins</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            9,50€
+                          </h4>
+                          <p>Location d'une paire incluse</p>
+                        </div>
+                        <a class="orange-btn mt-2" href="#">
+                          Réserver avec patins
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TARIF 3 : PASS FAMILLE -->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp text-center">Pass Famille</h3>
+                    <p class="text-center mb-6">pour 3 personnes</p>
+                    <div class="tarif-alone mb-6">
+                      <ul
+                        class="flex justify-center flex-col items-center gap-1 text-center"
+                      >
+                        <li>2 parents + 1 enfant jusqu'à 13 ans</li>
+                        <li>1 parent + 2 enfants jusqu'à 13 ans</li>
+                      </ul>
+                    </div>
+                    <div
+                      class="flex flex-row justify-center items-stretch gap-4 mt-4 w-full text-center"
+                    >
+                      <!-- Carte 1 -->
+                      <div
+                        class="flex-1 min-h-0 glass-card rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-alone">Entrée seule</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            14,00€
+                          </h4>
+                          <p>Si vous avez vos propres patins</p>
+                          <div class="pt-8">
+                            <a class="blue-btn !text-white" href="#"
+                              >Réserver sans patins</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Carte 2 -->
+                      <div
+                        class="flex-1 min-h-0 bg-white text-light-black rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-with-skater">Pack Entrée + Patins</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            20,00€
+                          </h4>
+                          <p>Location d'une paire incluse</p>
+                        </div>
+                        <a class="orange-btn mt-2" href="#">
+                          Réserver avec patins
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TARIF 4 : CARTE 12 ENTREES -->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp text-center mb-10">
+                      Carte 12 entrées
+                    </h3>
+
+                    <div
+                      class="flex flex-col md:flex-row justify-center items-stretch gap-6 w-full text-center"
+                    >
+                      <!-- CARTE ENTREE SEULE -->
+                      <div
+                        class="flex-1 glass-card rounded-2xl p-8 flex flex-col gap-8 shadow-lg"
+                      >
+                        <div>
+                          <p class="font-bold uppercase text-xl mb-2">
+                            Entrée seule
+                          </p>
+                          <p class="text-sm opacity-80">
+                            Si vous avez vos propres patins
+                          </p>
+                        </div>
+
+                        <!-- Tarif réduit -->
+                        <div
+                          class="glass-card rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-alone">Tarif réduit*</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">45€</span>
+                          </h4>
+
+                          <a class="blue-btn !text-white mt-2" href="#">
+                            Réserver
+                          </a>
+                        </div>
+
+                        <!-- Tarif normal -->
+                        <div
+                          class="glass-card rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-alone">Tarif normal</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">65€</span>
+                          </h4>
+
+                          <a class="blue-btn !text-white mt-2" href="#">
+                            Réserver
+                          </a>
+                        </div>
+                      </div>
+
+                      <!-- CARTE PACK PATINS -->
+                      <div
+                        class="flex-1 bg-white text-light-black rounded-2xl p-8 flex flex-col gap-8 shadow-lg"
+                      >
+                        <div>
+                          <p class="font-bold uppercase text-xl mb-2">
+                            Pack Entrée + Patins
+                          </p>
+                          <p class="text-sm opacity-70">
+                            Location d'une paire incluse
+                          </p>
+                        </div>
+
+                        <!-- Tarif réduit -->
+                        <div
+                          class="bg-gray-100 rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-with-skater">Tarif réduit*</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">75€</span>
+                          </h4>
+
+                          <a class="orange-btn mt-2" href="#"> Réserver </a>
+                        </div>
+
+                        <!-- Tarif normal -->
+                        <div
+                          class="bg-gray-100 rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-with-skater">Tarif normal</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">95€</span>
+                          </h4>
+
+                          <a class="orange-btn mt-2" href="#"> Réserver </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="pt-6 text-xs tarif-alone text-center">
+                      *Sous couvert de justificatif
+                    </p>
+                  </div>
+
+                  <!-- TARIF 5 : ABONNEMENT ANNUEL -->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp text-center mb-10">
+                      Carte 12 entrées
+                    </h3>
+
+                    <div
+                      class="flex flex-col md:flex-row justify-center items-stretch gap-6 w-full text-center"
+                    >
+                      <!-- ABONNEMENT ENTREE SEULE -->
+                      <div
+                        class="flex-1 glass-card rounded-2xl p-8 flex flex-col gap-8 shadow-lg"
+                      >
+                        <div>
+                          <p class="font-bold uppercase text-xl mb-2">
+                            Entrée seule
+                          </p>
+                          <p class="text-sm opacity-80">
+                            Si vous avez vos propres patins
+                          </p>
+                        </div>
+
+                        <!-- Tarif réduit -->
+                        <div
+                          class="glass-card rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-alone">Tarif réduit*</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">180€</span>
+                          </h4>
+
+                          <a class="blue-btn !text-white mt-2" href="#">
+                            Réserver
+                          </a>
+                        </div>
+
+                        <!-- Tarif normal -->
+                        <div
+                          class="glass-card rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-alone">Tarif normal</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">260€</span>
+                          </h4>
+
+                          <a class="blue-btn !text-white mt-2" href="#">
+                            Réserver
+                          </a>
+                        </div>
+                      </div>
+
+                      <!-- CARTE PACK PATINS -->
+                      <div
+                        class="flex-1 bg-white text-light-black rounded-2xl p-8 flex flex-col gap-8 shadow-lg"
+                      >
+                        <div>
+                          <p class="font-bold uppercase text-xl mb-2">
+                            Pack Entrée + Patins
+                          </p>
+                          <p class="text-sm opacity-70">
+                            Location d'une paire incluse
+                          </p>
+                        </div>
+
+                        <!-- Tarif réduit -->
+                        <div
+                          class="bg-gray-100 rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-with-skater">Tarif réduit*</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">300€</span>
+                          </h4>
+
+                          <a class="orange-btn mt-2" href="#"> Réserver </a>
+                        </div>
+
+                        <!-- Tarif normal -->
+                        <div
+                          class="bg-gray-100 rounded-xl p-6 flex flex-col gap-3"
+                        >
+                          <p class="tarif-with-skater">Tarif normal</p>
+
+                          <h4 class="font-bold">
+                            <span class="tarif-price font-h4-clamp">380€</span>
+                          </h4>
+
+                          <a class="orange-btn mt-2" href="#"> Réserver </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p class="pt-6 text-xs tarif-alone text-center">
+                      *Sous couvert de justificatif
+                    </p>
+                  </div>
+
+                  <!-- TARIF 6 : Accompagnement visiteur -->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp mb-6 text-center">
+                      Accompagnement visiteur
+                    </h3>
+                    <p class="text-center mb-6">
+                      2 adultes max par enfant de -14ans
+                    </p>
+                    <div
+                      class="flex flex-row justify-center items-stretch gap-4 mt-4 w-full text-center"
+                    >
+                      <!-- Carte 1 -->
+                      <div
+                        class="flex-1 min-h-0 glass-card rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-alone">Entrée seule</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            2,00€
+                          </h4>
+                        </div>
+                        <div class="pt-8">
+                          <a class="blue-btn !text-white" href="#">Réserver</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- TARIF 6 : Pass accompagnement annuel -->
+                  <div
+                    class="hidden tarifs-slide transition-transform duration-500 ease-in-out p-8"
+                  >
+                    <h3 class="font-h3-clamp mb-6 text-center">
+                      Pass accompagnement annuel
+                    </h3>
+
+                    <div
+                      class="flex flex-row justify-center items-stretch gap-4 mt-4 w-full text-center"
+                    >
+                      <!-- Carte 1 -->
+                      <div
+                        class="flex-1 min-h-0 glass-card rounded-2xl p-6 flex flex-col justify-between"
+                      >
+                        <div>
+                          <p class="tarif-alone">Entrée seule</p>
+                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                            20,00€
+                          </h4>
+                        </div>
+                        <div class="pt-8">
+                          <a class="blue-btn !text-white" href="#">Réserver</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENEMENTS -->
+      <section id="events" class="text-white bg-custom-black py-20">
+        <div class="container">
+          <div>
+            <h2 class="font-h2-clamp">Evènements</h2>
+          </div>
+          <div>
+            <div>Event 1</div>
+            <div>Event 2</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLUBS -->
+      <section id="clubs">
+        <div class="container">
+          <div>
+            <h2 class="font-h2-clamp">Clubs</h2>
+          </div>
+          <div>
+            <div>Hockey</div>
+            <div>Patin à glace</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- A PROPOS -->
+      <section id="about" class="bg-custom-black text-white py-20">
+        <div class="container">
+          <div>
+            <h2 class="font-h2-clamp text-center mb-10">La Patinoire</h2>
+          </div>
+          <div>
+            <div class="flex items-stretch gap-6 my-6">
+              <!-- Patins -->
+              <div
+                class="w-2/3 glass-patin-card patin-bg-img h-150 relative rounded-2xl"
+              >
+                <div class="absolute bottom-0 p-8">
+                  <h2 class="font-h2-clamp italic">L'acier et la glace</h2>
+                  <p class="text-custom-light-grey">
+                    Location de patins haute performance affûtés après chaque
+                    session pour une précision millimétrée.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Colonne droite -->
+              <div class="w-1/3 flex flex-col gap-6">
+                <div
+                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                >
+                  <h2 class="font-h2-clamp">1800m2</h2>
+                  <p class="uppercase text-custom-light-grey">
+                    surface de glisse
+                  </p>
+                </div>
+
+                <div
+                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                >
+                  <h2 class="font-h2-clamp">40 000</h2>
+                  <p class="uppercase text-custom-light-grey">
+                    visiteurs par an
+                  </p>
+                </div>
+
+                <div
+                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                >
+                  <h2 class="font-h2-clamp">1600</h2>
+                  <p class="uppercase text-custom-light-grey">places</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="glass-card flex justify-between items-center rounded-2xl p-8 my-6 min-h-50"
+            >
+              <div class="flex flex-col items-start">
+                <h2 class="font-h3-clamp">Bar & Lounge Premium</h2>
+                <p class="text-custom-light-grey">
+                  Cocktails signature et vue panoramique sur la piste depuis
+                  notre espace chauffé.
+                </p>
+              </div>
+              <a href="#" class="blue-btn">Découvrir la carte</a>
+            </div>
+
+            <div
+              class="glass-card flex justify-center items-stretch gap-6 rounded-2xl overflow-hidden"
+            >
+              <div class="flex-1">
+                <img
+                  src="img/patinoire-2.jpg"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div class="w-1/2 flex flex items-start flex-col p-8 gap-6">
+                <h3 class="font-h3-clamp">Notre histoire</h3>
+                <p>
+                  La patinoire de la Garde a été construite à la fin des années
+                  60 et rachetée en juin 1986, suite à des difficultés
+                  financières, par le Syndicat Intercommunal pour le Maintien de
+                  la Pratique des Sports de Glace, composé des villes de La
+                  Garde, Toulon, Le Pradet et Le Revest.
+                </p>
+                <p>
+                  Unique patinoire du département du Var, elle accueillait plus
+                  de 40 000 visiteurs par an et 14 000 enfants dans le cadre
+                  scolaire, avant sa fermeture.
+                </p>
+                <p>
+                  En juillet 2016, le Syndicat a dû prendre la décision de
+                  fermer l’établissement sportif pour des raisons de sécurité.
+                  Les années suivantes ont été consacrées à la réalisation d’un
+                  diagnostic complet de la structure, la concertation avec les
+                  clubs sportifs et la programmation des travaux, avant
+                  d’entamer la rénovation en juin 2019.
+                </p>
+
+                <p>
+                  La patinoire à réouvert ses portes le samedi 23 octobre 2021.
+                </p>
+
+                <p>
+                  Elle a conservé sur la façade ses couleurs olympiques,
+                  accompagnées aujourd’hui de ces mots : persévérance, plaisir
+                  et partage. Symbole de moments partagés en famille, de
+                  spectacles féériques sur glace et de compétitions animées, la
+                  patinoire de La Garde rouvre après 6 ans de travaux de
+                  réhabilitation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFOS PRATIQUES -->
+      <section id="infos" class="bg-custom-black"></section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="md:w-1/2 w-full">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2912.162474037092!2d5.997728775505204!3d43.12211297113231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9196c35eb78bf%3A0x420dfe7af0a4ea7a!2sPatinoire%20de%20La%20Garde!5e0!3m2!1sfr!2sfr!4v1774128855803!5m2!1sfr!2sfr"
+            class="w-full h-full rounded-2xl shadow-lg"
+            style="border: 0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-custom-black text-white p-6 backdrop-blur-xl">
+      <div class="flex justify-between items-baselin p-6">
+        <div class="flex flex-col justify-center items-center gap-4">
+          <div class="flex items-center gap-4">
+            <img src="img/logo.jpg" alt="logo" class="h-10 rounded-lg" />
+            <a href="#" aria-label="La Patinoire La Garde">
+              <h2 class="font-brand-clamp text-left">
+                La Patinoire <span class="text-blue">La Garde</span>
+              </h2>
+            </a>
+          </div>
+          <p>
+            L'excellence de la glisse urbaine. <br />Nous redéfinissons les
+            standards des loisirs de glace depuis 2024.
+          </p>
+        </div>
+
+        <div class="flex flex-col justify-center items-center gap-4">
+          <p>Navigation</p>
+          <a>Horaires & tarifs</a>
+          <a>Evènements</a>
+          <a>A propos</a>
+        </div>
+        <div class="flex flex-col justify-center items-center gap-4">
+          <p>Nous trouver</p>
+          <p>Adresse</p>
+          <p>email</p>
+        </div>
+      </div>
+      <div class="border-t-1 border-gray-700 p-6">
+        <p class="text-center text-custom-light-grey">
+          La Patinoire La Garde © 2026
+        </p>
+      </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-blue: #0073c4;
+        --color-orange: #f8a638;
+        --color-light-black: #26272b;
+        --color-green: #079146;
+        --color-red: #d82b49;
+        --color-custom-black: #141415;
+        --color-custom-light-grey: #c4c4c4;
+      }
+    </style>
+  </body>
+</html>
