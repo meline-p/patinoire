@@ -7,6 +7,7 @@
   --color-white: #fff;
 
   --color-custom-black: #020617;
+  --color-custom-light-black: #0f132e;
   --color-custom-black-old: #141415;
   --color-custom-light-grey: #c4c4c4;
 
@@ -60,13 +61,13 @@ a {
 
 /*** TITRES ***/
 .font-h1-clamp {
-  font-size: clamp(28px, 6vw, 120px);
-  line-height: clamp(32px, 6vw, 120px);
+  font-size: clamp(32px, 6vw, 120px);
+  line-height: clamp(50px, 6vw, 140px);
 }
 
 .font-h2-clamp {
   font-size: clamp(24px, 4vw, 48px);
-  line-height: clamp(32px, 4vw, 58px);
+  line-height: clamp(40px, 4vw, 60px);
 }
 
 .font-h3-clamp {
@@ -78,7 +79,7 @@ a {
 }
 
 .font-brand-clamp {
-  font-size: clamp(24px, 2.5vw, 36px);
+  font-size: clamp(16px, 2.5vw, 36px);
   text-transform: uppercase;
   font-style: italic;
   font-weight: bold;
