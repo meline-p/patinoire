@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content=" La Patinoire La Garde. Syndicat Intercommunal pour le Maintien et la Pratique des
+                Sports de Glace. Toulon, La Garde, Le Pradet, Le Revest.
+                Patinage libre, clubs et événements toute l’année"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Patinoire La Garde</title>
 
@@ -46,11 +52,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap"
+      />
+    </noscript>
   </head>
-  <body>
+  <body class="snap-y snap-mandatory">
     <!-- NAVIGATION -->
     <div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
       <div
@@ -59,6 +76,7 @@
         <a
           href="#schedule"
           class="w-1/2 blue-btn px-6 py-3 text-center rounded-3xl"
+          aria-label="Horaires"
         >
           Horaires
         </a>
@@ -66,18 +84,25 @@
         <a
           href="#price"
           class="w-1/2 orange-btn px-6 py-3 text-center rounded-3xl"
+          aria-label="Tarifs"
         >
           Tarifs
         </a>
       </div>
     </div>
     <header
-      class="fixed top-0 left-0 w-full z-50 bg-custom-black p-6 shadow-lg shadow-gray-700/50 text-white"
+      class="animate-fade-blur fixed top-0 left-0 w-full z-50 bg-custom-black p-6 shadow-lg shadow-gray-700/50 text-white"
     >
       <div class="flex justify-between items-center">
         <!-- Logo -->
         <div class="flex justify-center items-center gap-4">
-          <img src="img/logo.jpg" alt="logo" class="h-10 rounded-lg" />
+          <img
+            src="img/logo.jpg"
+            alt="logo"
+            class="h-10 rounded-lg aspect-[6/5]"
+            width="48px"
+            height="40px"
+          />
           <a href="#" aria-label="La Patinoire La Garde">
             <div class="font-brand-clamp flex md:flex-row flex-col md:gap-2">
               <h2 class="">La Patinoire</h2>
@@ -87,7 +112,7 @@
         </div>
 
         <!-- Menu desktop -->
-        <nav class="hidden xl:flex gap-8 uppercase text-xl items-center">
+        <nav class="hidden xl:flex gap-6 uppercase text-xl items-center">
           <a class="hover:text-orange" aria-label="Événements" href="#events"
             >Événements</a
           >
@@ -105,9 +130,13 @@
         <!-- Bouton desktop -->
         <div class="hidden lg:block">
           <div class="flex justify-center items-center gap-4">
-            <a href="#schedule" class="blue-btn" aria-label="Horaires"
-              >Horaires</a
-            >
+            <div class="flex justify-center items-center gap-4">
+              <div class="time-dot dot closed"></div>
+              <a href="#schedule" class="blue-btn" aria-label="Horaires"
+                >Horaires</a
+              >
+            </div>
+
             <a href="#price" class="orange-outline-btn" aria-label="Tarifs"
               >Tarifs</a
             >
@@ -131,22 +160,38 @@
       >
         <a class="" aria-label="Événements" href="#events">Événements</a>
         <a class="" aria-label="Clubs" href="#clubs">Clubs</a>
-        <a class="hover:text-orange" aria-label="Snack" href="#snack">Snack</a>
+        <a class="" aria-label="Snack" href="#snack">Snack</a>
         <a class="" aria-label="Contact" href="#contact">Contact</a>
       </div>
     </header>
 
     <main>
       <!-- HERO -->
-      <section class="h-dvh hero-bg-img text-white text-center" id="hero">
+      <section
+        class="snap-start scroll-section h-dvh hero-bg-img text-white text-center"
+        id="hero"
+      >
         <div class="container h-full w-full">
           <div class="h-full w-full flex flex-col justify-center items-center">
-            <h1 class="font-h1-clamp mt-6">
-              Patinoire de <br /><span class="hero-text-gradient"
-                >La Garde</span
-              >
-            </h1>
-            <div class="md:text-xl text-md text-custom-light-grey md:my-6 mb-4">
+            <!-- open/soon/closed -->
+            <div
+              id="status"
+              class="border-1 border-gray-600 rounded-2xl px-4 py-2 md:text-md text-xs mt-6 opacity-0 delay-4 ice-element"
+            >
+              <span class="dot closed"></span>
+              <span class="text">Chargement...</span>
+            </div>
+            <div class="opacity-0 ice-element delay-1">
+              <h1 class="font-h1-clamp mt-6">
+                Patinoire de <br /><span class="hero-text-gradient"
+                  >La Garde</span
+                >
+              </h1>
+            </div>
+
+            <div
+              class="opacity-0 ice-element delay-2 md:text-xl text-md text-custom-light-grey md:my-6 mb-4"
+            >
               <div
                 class="md:my-6 my-6 flex justify-center md:flex-row flex-col items-center md:gap-8 gap-2 text-xs uppercase tracking-[0.3em] font-light"
               >
@@ -160,14 +205,24 @@
                 Syndicat Intercommunal pour le Maintien et la Pratique des
                 Sports de Glace.
               </p>
-              <p>Patinage libre, clubs et événements toute l’année.</p>
+              <p class=" ">
+                Patinage libre, clubs et événements toute l’année.
+              </p>
             </div>
 
-            <div class="flex justify-cente gap-4 md:mt-4 mt-6">
-              <a href="#schedule" class="blue-btn md:text-md text-sm"
+            <div
+              class="opacity-0 ice-element delay-3 flex justify-center gap-4 md:mt-4 mt-6"
+            >
+              <a
+                href="#schedule"
+                aria-label="Voir les horaires"
+                class="blue-btn md:text-md text-xs"
                 >Voir les horaires</a
               >
-              <a href="#price" class="orange-outline-btn md:text-md text-sm"
+              <a
+                href="#price"
+                aria-label="Voir les tarifs"
+                class="orange-outline-btn md:text-md text-xs"
                 >Voir les tarifs</a
               >
             </div>
@@ -176,11 +231,13 @@
       </section>
 
       <!-- HORAIRES + TARIFS -->
-      <section class="py-20 bg-custom-light-black text-white">
+      <section
+        class="snap-start scroll-section py-20 bg-custom-light-black text-white"
+      >
         <div class="container">
           <!-- horaires -->
           <div class="text-center mx-auto py-20 scroll-mt-24" id="schedule">
-            <div>
+            <div class="animate-on-scroll">
               <h2 class="font-h2-clamp mb-6">
                 Horaires d'Ouverture <br />des séances publiques
               </h2>
@@ -190,105 +247,133 @@
             <!-- Bloc horaires -->
             <div class="flex flex-col justify-center gap-6">
               <p
-                class="text-custom-light-grey my-4 text-2xl font-bold uppercase"
+                class="text-custom-light-grey my-4 text-2xl font-bold uppercase animate-on-scroll delay-1"
               >
                 Période scolaire
               </p>
-
               <div
-                class="md:text-md text-sm mx-auto lg:w-1/2 w-full flex justify-center flex-col"
+                class="flex justify-center lg:flex-row flex-col items-center gap-8"
               >
                 <div
-                  class="glass-card flex flex-col p-6 gap-4 rounded-2xl shadow-lg h-full"
+                  class="md:text-md animate-on-scroll delay-2 text-sm mx-auto lg:w-2/3 w-full flex justify-center flex-col"
                 >
                   <div
-                    class="flex justify-between border-b border-gray-700 p-2"
+                    class="glass-card flex flex-col p-6 gap-4 rounded-2xl shadow-lg h-full"
                   >
-                    <p>Lundi</p>
-                    <p>fermé</p>
-                  </div>
-
-                  <div
-                    class="flex justify-between border-b border-gray-700 p-2"
-                  >
-                    <p>Mardi</p>
-                    <p>fermé</p>
-                  </div>
-
-                  <div
-                    class="flex justify-between border-b border-gray-700 p-2"
-                  >
-                    <p>Mercredi</p>
-                    <p>14:00 - 17:00</p>
-                  </div>
-
-                  <div
-                    class="flex justify-between border-b border-gray-700 p-2"
-                  >
-                    <p>Jeudi</p>
-                    <p>fermé</p>
-                  </div>
-
-                  <div
-                    class="flex justify-between border-b border-gray-700 p-2"
-                  >
-                    <div class="flex items-center gap-4">
-                      <p>Vendredi</p>
-                      <i class="fa-solid fa-music text-orange"></i>
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <p>Lundi</p>
+                      <p>fermé</p>
                     </div>
-                    <p>21:00 - 00:00</p>
-                  </div>
 
-                  <div
-                    class="flex justify-between border-b border-gray-700 p-2"
-                  >
-                    <div class="flex items-center gap-4">
-                      <p>Samedi</p>
-                      <i class="fa-solid fa-music text-orange"></i>
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <p>Mardi</p>
+                      <p>fermé</p>
                     </div>
-                    <div class="flex md:flex-row flex-col gap-4">
+
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <p>Mercredi</p>
                       <p>14:00 - 17:00</p>
+                    </div>
+
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <p>Jeudi</p>
+                      <p>fermé</p>
+                    </div>
+
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <div class="flex items-center gap-4">
+                        <p>Vendredi</p>
+                        <i class="fa-solid fa-music text-orange"></i>
+                      </div>
                       <p>21:00 - 00:00</p>
                     </div>
+
+                    <div
+                      class="flex justify-between border-b border-gray-700 p-2"
+                    >
+                      <div class="flex items-center gap-4">
+                        <p>Samedi</p>
+                        <i class="fa-solid fa-music text-orange"></i>
+                      </div>
+                      <div class="flex md:flex-row flex-col gap-4">
+                        <p>14:00 - 17:00</p>
+                        <p>21:00 - 00:00</p>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-between p-2">
+                      <p>Dimanche</p>
+                      <p>14:00 - 17:00</p>
+                    </div>
                   </div>
 
-                  <div class="flex justify-between p-2">
-                    <p>Dimanche</p>
-                    <p>14:00 - 17:00</p>
+                  <div class="flex justify-center items-center gap-4 mt-4">
+                    <i class="fa-solid fa-music text-orange"></i>
+                    <p class="text-custom-light-grey">Sessions nocturnes</p>
                   </div>
                 </div>
+                <div
+                  class="animate-on-scroll delay-3 flex justify-center gap-6 items-center flex-col"
+                >
+                  <div class="flex flex-col gap-6">
+                    <p class="text-orange font-bold uppercase">
+                      Evacuation de la piste 10 minutes avant la fermeture
+                    </p>
+                    <div>
+                      <p class="text-orange font-bold uppercase">
+                        Gants obligatoires pour tous
+                      </p>
+                      <p>Distributeur automatique de gants 4€</p>
+                    </div>
+                    <div>
+                      <p class="text-orange font-bold uppercase">Interdit</p>
+                      <p>Jupe, Bermuda, jupette</p>
+                    </div>
+                  </div>
 
-                <div class="flex justify-center items-center gap-4 mt-4">
-                  <i class="fa-solid fa-music text-orange"></i>
-                  <p class="text-custom-light-grey">Sessions nocturnes</p>
-                </div>
-              </div>
-              <div class="flex justify-center gap-6 items-center flex-col">
-                <p class="text-orange font-bold text-xl">
-                  Evacuation de la piste 10 minutes avant la fermeture
-                </p>
-                <div>
-                  <p class="font-bold">FERMETURES EXCEPTIONNELLES</p>
-                  <p>1er mai toute la journée</p>
-                </div>
-                <div>
-                  <p class="font-bold">FERMETURE ESTIVALE</p>
-                  <p>A partir du 9 mai 2026</p>
+                  <div>
+                    <p class="font-bold text-orange">
+                      FERMETURES EXCEPTIONNELLES
+                    </p>
+                    <p>1er mai toute la journée</p>
+                  </div>
+                  <div>
+                    <p class="font-bold text-orange">FERMETURE ESTIVALE</p>
+                    <p>A partir du 9 mai 2026</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      <section
+        class="snap-start scroll-section py-20 bg-custom-light-black text-white"
+      >
+        <div class="container">
           <!-- tarifs -->
           <div class="relative py-20 scroll-mt-24" id="price">
-            <div class="text-center my-6">
+            <div class="text-center my-6 animate-on-scroll">
               <h2 class="font-h2-clamp my-6">Nos Tarifs</h2>
               <p class="text-custom-light-grey">
                 Sélectionnez votre profil pour comparer les options
               </p>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 text-center mb-6">
+            <div
+              class="animate-on-scroll delay-1 glass-card rounded-2xl p-6 text-center mb-6"
+            >
               <p class="text-orange text-xl font-bold">
                 Les enfants sont acceptés à partir de 4 ans.
               </p>
@@ -305,49 +390,56 @@
               >
                 <div
                   id="tarif-types"
-                  class="lg:w-1/4 xl:w-1/3 w-full flex flex-col justify-center gap-3 mt-6"
+                  class="animate-on-scroll delay-2 lg:w-1/4 xl:w-1/3 w-full flex flex-col justify-center gap-3 mt-6"
                 >
                   <div>
                     <p class="p-2 text-custom-light-grey">J'ai besoin de...</p>
                   </div>
                   <a
                     href="#view-price-1"
+                    aria-label="Tarifs réduits"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Tarifs réduits</h3>
                   </a>
                   <a
                     href="#view-price-2"
+                    aria-label="A partir de 14 ans"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>A partir de 14 ans</h3>
                   </a>
                   <a
                     href="#view-price-3"
+                    aria-label="Pass Famille"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Pass Famille</h3>
                   </a>
                   <a
                     href="#view-price-4"
+                    aria-label="Carte 12 entrées"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Carte 12 entrées</h3>
                   </a>
                   <a
                     href="#view-price-5"
+                    aria-label="Abonnement annuel"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Abonnement annuel</h3>
                   </a>
                   <a
                     href="#view-price-6"
+                    aria-label="Accompagnement visiteur"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Accompagnement visiteur</h3>
                   </a>
                   <a
                     href="#view-price-7"
+                    aria-label="Pass Accompagnateur annuel"
                     class="tarif-type cursor-pointer p-4 shadow-xl rounded-2xl"
                   >
                     <h3>Pass Accompagnateur annuel</h3>
@@ -355,7 +447,7 @@
                 </div>
 
                 <div
-                  class="lg:w-3/4 xl:w-2/3 w-full overflow-hidden relative glass-card text-white rounded-2xl"
+                  class="animate-on-scroll delay-3 lg:w-3/4 xl:w-2/3 w-full overflow-hidden relative glass-card text-white rounded-2xl"
                 >
                   <!-- TARIF 1 : TARIFS REDUITS-->
                   <div
@@ -385,13 +477,16 @@
                       >
                         <div>
                           <p class="tarif-alone">Entrée seule</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             4,50€
-                          </h4>
+                          </p>
                           <p>Si vous avez vos propres patins</p>
                         </div>
                         <div class="pt-8">
-                          <a class="blue-btn !text-white" href="#"
+                          <a
+                            class="blue-btn !text-white"
+                            href="#"
+                            aria-label="Réserver sans patins"
                             >Réserver sans patins</a
                           >
                         </div>
@@ -403,12 +498,16 @@
                       >
                         <div>
                           <p class="tarif-with-skater">Pack Entrée + Patins</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             7,50€
-                          </h4>
+                          </p>
                           <p>Location d'une paire incluse</p>
                         </div>
-                        <a class="orange-btn mt-2" href="#">
+                        <a
+                          class="orange-btn mt-2"
+                          href="#"
+                          aria-label="Réserver avec patins"
+                        >
                           Réserver avec patins
                         </a>
                       </div>
@@ -434,13 +533,16 @@
                       >
                         <div>
                           <p class="tarif-alone">Entrée seule</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             6,50€
-                          </h4>
+                          </p>
                           <p>Si vous avez vos propres patins</p>
                         </div>
                         <div class="pt-8">
-                          <a class="blue-btn !text-white" href="#"
+                          <a
+                            class="blue-btn !text-white"
+                            href="#"
+                            aria-label="Réserver sans patins"
                             >Réserver sans patins</a
                           >
                         </div>
@@ -452,12 +554,16 @@
                       >
                         <div>
                           <p class="tarif-with-skater">Pack Entrée + Patins</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             9,50€
-                          </h4>
+                          </p>
                           <p>Location d'une paire incluse</p>
                         </div>
-                        <a class="orange-btn mt-2" href="#">
+                        <a
+                          class="orange-btn mt-2"
+                          href="#"
+                          aria-label="Réserver avec patins"
+                        >
                           Réserver avec patins
                         </a>
                       </div>
@@ -487,12 +593,15 @@
                       >
                         <div>
                           <p class="tarif-alone">Entrée seule</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             14,00€
-                          </h4>
+                          </p>
                           <p>Si vous avez vos propres patins</p>
                           <div class="pt-8">
-                            <a class="blue-btn !text-white" href="#"
+                            <a
+                              class="blue-btn !text-white"
+                              href="#"
+                              aria-label="Réserver sans patins"
                               >Réserver sans patins</a
                             >
                           </div>
@@ -505,12 +614,16 @@
                       >
                         <div>
                           <p class="tarif-with-skater">Pack Entrée + Patins</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             20,00€
-                          </h4>
+                          </p>
                           <p>Location d'une paire incluse</p>
                         </div>
-                        <a class="orange-btn mt-2" href="#">
+                        <a
+                          class="orange-btn mt-2"
+                          href="#"
+                          aria-label="Réserver avec patins"
+                        >
                           Réserver avec patins
                         </a>
                       </div>
@@ -547,11 +660,15 @@
                         >
                           <p class="tarif-alone">Tarif réduit*</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">45€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="blue-btn mt-2 !text-white">
+                          <a
+                            href="#"
+                            class="blue-btn mt-2 !text-white"
+                            aria-label="Réserver"
+                          >
                             Réserver
                           </a>
                         </div>
@@ -562,11 +679,15 @@
                         >
                           <p class="tarif-alone">Tarif normal</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">65€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="blue-btn mt-2 !text-white">
+                          <a
+                            href="#"
+                            class="blue-btn mt-2 !text-white"
+                            aria-label="Réserver"
+                          >
                             Réserver
                           </a>
                         </div>
@@ -591,11 +712,17 @@
                         >
                           <p class="tarif-with-skater">Tarif réduit*</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">75€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="orange-btn mt-2"> Réserver </a>
+                          <a
+                            href="#"
+                            class="orange-btn mt-2"
+                            aria-label="Réserver"
+                          >
+                            Réserver
+                          </a>
                         </div>
 
                         <!-- Tarif normal -->
@@ -604,11 +731,17 @@
                         >
                           <p class="tarif-with-skater">Tarif normal</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">95€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="orange-btn mt-2"> Réserver </a>
+                          <a
+                            href="#"
+                            class="orange-btn mt-2"
+                            aria-label="Réserver"
+                          >
+                            Réserver
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -649,11 +782,15 @@
                         >
                           <p class="tarif-alone">Tarif réduit*</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">180€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="blue-btn mt-2 !text-white">
+                          <a
+                            href="#"
+                            class="blue-btn mt-2 !text-white"
+                            aria-label="Réserver"
+                          >
                             Réserver
                           </a>
                         </div>
@@ -664,11 +801,15 @@
                         >
                           <p class="tarif-alone">Tarif normal</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">260€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="blue-btn mt-2 !text-white">
+                          <a
+                            href="#"
+                            class="blue-btn mt-2 !text-white"
+                            aria-label="Réserver"
+                          >
                             Réserver
                           </a>
                         </div>
@@ -693,11 +834,17 @@
                         >
                           <p class="tarif-with-skater">Tarif réduit*</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">300€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="orange-btn mt-2"> Réserver </a>
+                          <a
+                            href="#"
+                            class="orange-btn mt-2"
+                            aria-label="Réserver"
+                          >
+                            Réserver
+                          </a>
                         </div>
 
                         <!-- Tarif normal -->
@@ -706,11 +853,17 @@
                         >
                           <p class="tarif-with-skater">Tarif normal</p>
 
-                          <h4 class="font-bold">
+                          <p class="font-bold">
                             <span class="tarif-price font-h4-clamp">380€</span>
-                          </h4>
+                          </p>
 
-                          <a href="#" class="orange-btn mt-2"> Réserver </a>
+                          <a
+                            href="#"
+                            class="orange-btn mt-2"
+                            aria-label="Réserver"
+                          >
+                            Réserver
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -740,12 +893,17 @@
                       >
                         <div>
                           <p class="tarif-alone">Entrée seule</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             2,00€
-                          </h4>
+                          </p>
                         </div>
                         <div class="pt-8">
-                          <a class="blue-btn !text-white" href="#">Réserver</a>
+                          <a
+                            class="blue-btn !text-white"
+                            href="#"
+                            aria-label="Réserver"
+                            >Réserver</a
+                          >
                         </div>
                       </div>
                     </div>
@@ -768,12 +926,17 @@
                       >
                         <div>
                           <p class="tarif-alone">Entrée seule</p>
-                          <h4 class="font-bold p-4 tarif-price font-h4-clamp">
+                          <p class="font-bold p-4 tarif-price font-h4-clamp">
                             20,00€
-                          </h4>
+                          </p>
                         </div>
                         <div class="pt-8">
-                          <a class="blue-btn !text-white" href="#">Réserver</a>
+                          <a
+                            class="blue-btn !text-white"
+                            href="#"
+                            aria-label="Réserver"
+                            >Réserver</a
+                          >
                         </div>
                       </div>
                     </div>
@@ -788,12 +951,14 @@
       <!-- EVENEMENTS -->
       <section
         id="events"
-        class="scroll-mt-24 text-white bg-custom-black py-20"
+        class="snap-start scroll-section scroll-mt-24 text-white bg-custom-black py-20"
       >
         <div class="container">
           <div>
-            <h2 class="font-h2-clamp text-center my-4">Evènements</h2>
-            <p class="text-center">
+            <h2 class="animate-on-scroll font-h2-clamp text-center my-4">
+              Evènements
+            </h2>
+            <p class="animate-on-scroll delay-1 text-center">
               La glace s’anime toute l’année ! <br />
               Participez à nos soirées à thème, sessions musicales et événements
               spéciaux pour vivre la patinoire dans une ambiance unique.
@@ -804,11 +969,14 @@
           >
             <!-- EVENT 1 -->
             <div
-              class="w-full glass-card rounded-2xl flex md:flex-row flex-col md:items-stretch items-center overflow-hidden"
+              class="animate-on-scroll delay-2 w-full glass-card rounded-2xl flex md:flex-row flex-col md:items-stretch items-center overflow-hidden"
             >
               <img
                 src="img/2000s.avif"
-                class="md:flex-1 md:w-1/2 md:h-auto h-60 w-full object-cover"
+                class="md:flex-1 md:w-1/2 md:h-auto h-60 w-full object-cover aspect-[5/7]"
+                width="456px"
+                height="646px"
+                alt="Soirée Années 2000"
               />
 
               <div
@@ -819,22 +987,27 @@
                 >
                   <i class="fa-regular fa-clock"></i> 19 jours
                 </p>
-                <h4 class="font-h4-clamp">Soirée Années 2000</h4>
+                <p class="font-h4-clamp">Soirée Années 2000</p>
                 <div class="flex flex-col gap-2">
                   <p>vendredi 10 avril | La Garde</p>
                   <p>21:00 - 00:00</p>
                 </div>
-                <a href="#" class="blue-btn"> Réserver </a>
+                <a href="#" class="blue-btn" aria-label="Réserver">
+                  Réserver
+                </a>
               </div>
             </div>
 
             <!-- EVENT 2 -->
             <div
-              class="w-full glass-card rounded-2xl flex md:flex-row flex-col md:items-stretch items-center overflow-hidden"
+              class="animate-on-scroll delay-3 w-full glass-card rounded-2xl flex md:flex-row flex-col md:items-stretch items-center overflow-hidden"
             >
               <img
                 src="img/summer-party.avif"
-                class="md:flex-1 md:w-1/2 md:h-auto h-60 w-full object-cover"
+                class="md:flex-1 md:w-1/2 md:h-auto h-60 w-full object-cover aspect-[5/7]"
+                alt="Summer Party"
+                width="456px"
+                height="646px"
               />
 
               <div
@@ -845,12 +1018,14 @@
                 >
                   <i class="fa-regular fa-clock"></i> 47 jours
                 </p>
-                <h4 class="font-h4-clamp">Summer Party</h4>
+                <p class="font-h4-clamp">Summer Party</p>
                 <div class="flex flex-col gap-2">
                   <p>vendredi 8 mai | La Garde</p>
                   <p>21:00 - 00:00</p>
                 </div>
-                <a href="#" class="blue-btn"> Réserver </a>
+                <a href="#" class="blue-btn" aria-label="Réserver">
+                  Réserver
+                </a>
               </div>
             </div>
           </div>
@@ -858,83 +1033,103 @@
       </section>
 
       <!-- CLUBS -->
-      <section id="clubs" class="scroll-mt-24 bg-custom-black text-white py-20">
+      <section
+        id="clubs"
+        class="snap-start scroll-section scroll-mt-24 bg-custom-black text-white py-20"
+      >
         <div class="container">
           <div class="text-center py-4">
-            <h2 class="font-h2-clamp my-4">Clubs</h2>
-            <p>Il y en a pour tous les goûts</p>
+            <h2 class="animate-on-scroll font-h2-clamp my-4">Clubs</h2>
+            <p class="animate-on-scroll delay-1">
+              Il y en a pour tous les goûts
+            </p>
           </div>
           <div
             class="flex justify-center items-stretch gap-6 lg:flex-row flex-col"
           >
             <!-- HOCKEY CLUB -->
             <div
-              class="flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
+              class="animate-on-scroll delay-2 flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
             >
               <img
                 src="img/hockey.avif"
-                class="w-full md:h-80 h-60 object-cover"
+                class="w-full md:h-80 h-60 object-cover aspect-[6/5]"
+                width="756px"
+                height="636px"
+                alt="hockey"
               />
 
               <div
                 class="flex-1 p-6 flex flex-col justify-between items-center text-center gap-6"
               >
-                <h4 class="font-h4-clamp">Hockey Club de l'Aire Toulonnaise</h4>
+                <p class="font-h4-clamp">Hockey Club de l'Aire Toulonnaise</p>
 
                 <p class="text-custom-light-grey">
                   Prêt à glisser, jouer et vibrer ? Rejoignez les Boucaniers de
                   Toulon !
                 </p>
 
-                <a href="#" class="blue-btn">Voir le site</a>
+                <a href="#" class="blue-btn" aria-label="Voir le site"
+                  >Voir le site</a
+                >
               </div>
             </div>
 
             <!-- PATIN A GLACE -->
             <div
-              class="flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
+              class="animate-on-scroll delay-3 flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
             >
               <img
                 src="img/patin.jpeg"
-                class="w-full md:h-80 h-60 object-cover"
+                class="w-full md:h-80 h-60 object-cover aspect-[3/2]"
+                width="1600px"
+                height="1067px"
+                alt="patinage artistique"
               />
 
               <div
                 class="flex-1 p-6 flex flex-col justify-between items-center text-center gap-6"
               >
-                <h4 class="font-h4-clamp">
+                <p class="font-h4-clamp">
                   École de patinage artistique Silver Skates
-                </h4>
+                </p>
 
                 <p class="text-custom-light-grey">
                   Apprenez à patiner avec le Silver Skates, une école conviviale
                   où passion et plaisir de la glace se rencontrent.
                 </p>
 
-                <a href="#" class="blue-btn">Voir le site</a>
+                <a href="#" class="blue-btn" aria-label="Voir le site"
+                  >Voir le site</a
+                >
               </div>
             </div>
 
             <!-- CURLING -->
             <div
-              class="flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
+              class="animate-on-scroll delay-4 flex-1 glass-card rounded-2xl flex flex-col overflow-hidden"
             >
               <img
                 src="img/curling.avif"
-                class="w-full md:h-80 h-60 object-cover"
+                class="w-full md:h-80 h-60 object-cover aspect-[3/2]"
+                width="971px"
+                height="646px"
+                alt="curling"
               />
 
               <div
                 class="flex-1 p-6 flex flex-col justify-between items-center text-center gap-6"
               >
-                <h4 class="font-h4-clamp">Club de curling La Garde</h4>
+                <p class="font-h4-clamp">Club de curling La Garde</p>
 
                 <p class="text-custom-light-grey">
                   Balai en main, pierre lancée : venez découvrir le curling avec
                   le club de La Garde !
                 </p>
 
-                <a href="#" class="blue-btn">Contacter le club</a>
+                <a href="#" class="blue-btn" aria-label="Contacter le club"
+                  >Contacter le club</a
+                >
               </div>
             </div>
           </div>
@@ -942,16 +1137,21 @@
       </section>
 
       <!-- A PROPOS -->
-      <section id="about" class="bg-custom-black text-white py-20">
+      <section
+        id="about"
+        class="snap-start scroll-section bg-custom-black text-white py-20"
+      >
         <div class="container">
           <div>
-            <h2 class="font-h2-clamp text-center mb-10">La Patinoire</h2>
+            <h2 class="animate-on-scroll font-h2-clamp text-center mb-10">
+              La Patinoire
+            </h2>
           </div>
           <div>
             <div class="flex md:flex-row flex-col items-stretch gap-6 my-6">
               <!-- Patins -->
               <div
-                class="md:w-2/3 w-full glass-patin-card patin-bg-img h-150 relative rounded-2xl md:text-left text-center"
+                class="animate-on-scroll delay-1 md:w-2/3 w-full glass-patin-card patin-bg-img h-150 relative rounded-2xl md:text-left text-center"
               >
                 <div class="absolute bottom-0 p-8">
                   <h2 class="font-h2-clamp italic">L'acier et la glace</h2>
@@ -967,16 +1167,16 @@
                 class="md:w-1/3 w-full flex flex-col gap-6 md:text-left text-center"
               >
                 <div
-                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                  class="animate-on-scroll delay-2 flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
                 >
-                  <h2 class="font-h2-clamp">1800m2</h2>
+                  <h2 class="font-h2-clamp">1200m²</h2>
                   <p class="uppercase text-custom-light-grey">
                     surface de glisse
                   </p>
                 </div>
 
                 <div
-                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                  class="animate-on-scroll delay-3 flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
                 >
                   <h2 class="font-h2-clamp">40 000</h2>
                   <p class="uppercase text-custom-light-grey">
@@ -985,9 +1185,9 @@
                 </div>
 
                 <div
-                  class="flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
+                  class="animate-on-scroll delay-4 flex-1 glass-card rounded-2xl p-8 flex flex-col justify-center"
                 >
-                  <h2 class="font-h2-clamp">1600</h2>
+                  <h2 class="font-h2-clamp">1700</h2>
                   <p class="uppercase text-custom-light-grey">places</p>
                 </div>
               </div>
@@ -996,7 +1196,7 @@
             <!-- Snack -->
             <div
               id="snack"
-              class="scroll-mt-24 md:text-left text-center glass-card flex gap-6 justify-between lg:flex-row flex-col items-center rounded-2xl p-8 my-6 min-h-50"
+              class="animate-on-scroll scroll-mt-24 md:text-left text-center glass-card flex gap-6 justify-between lg:flex-row flex-col items-center rounded-2xl p-8 my-6 min-h-50"
             >
               <div class="flex flex-col md:items-start items-center gap-4">
                 <h2 class="font-h3-clamp">Notre Snack</h2>
@@ -1012,19 +1212,25 @@
                   </p>
                 </div>
               </div>
-              <a href="#" class="blue-btn whitespace-nowrap"
+              <a
+                href="#"
+                class="blue-btn whitespace-nowrap"
+                aria-label="Découvrir la carte"
                 >Découvrir la carte</a
               >
             </div>
 
             <!-- Notre histoire -->
             <div
-              class="glass-card flex lg:flex-row flex-col justify-center items-stretch gap-6 rounded-2xl overflow-hidden"
+              class="animate-on-scroll glass-card flex lg:flex-row flex-col justify-center items-stretch gap-6 rounded-2xl overflow-hidden"
             >
               <div class="flex-1">
                 <img
                   src="img/patinoire-2.jpg"
-                  class="object-cover w-full h-full"
+                  class="object-cover w-full h-full aspect-[19/13]"
+                  width="1216px"
+                  height="832px"
+                  alt="patinoire"
                 />
               </div>
               <div
@@ -1073,13 +1279,13 @@
       <!-- CONTACT -->
       <section
         id="contact"
-        class="scroll-mt-24 bg-custom-light-black text-white pt-20"
+        class="snap-start scroll-section scroll-mt-24 bg-custom-light-black text-white pt-20"
       >
         <div class="container">
           <div class="text-center">
-            <h2 class="font-h2-clamp mb-6">Contact</h2>
+            <h2 class="animate-on-scroll font-h2-clamp mb-6">Contact</h2>
             <div class="mb-10">
-              <p>
+              <p class="animate-on-scroll delay-1">
                 Besoin d’informations ? <br />N’hésitez pas à nous écrire, notre
                 équipe vous répondra avec plaisir.
               </p>
@@ -1091,7 +1297,9 @@
             <div class="md:w-1/2 w-full">
               <!-- infos -->
               <div class="flex flex-col items-start gap-4 text-sm sm:text-base">
-                <div class="flex justify-center items-start gap-4">
+                <div
+                  class="animate-on-scroll delay-2 flex justify-center items-start gap-4"
+                >
                   <i class="fa-solid fa-location-dot"></i>
                   <div class="flex flex-col gap-4">
                     <p>
@@ -1109,18 +1317,27 @@
                   </div>
                 </div>
 
-                <div class="flex justify-center items-center gap-4">
+                <div
+                  class="animate-on-scroll delay-3 flex justify-center items-center gap-4"
+                >
                   <i class="fa-solid fa-phone"></i>
-                  <a href="tel:0489964270" class="hover:text-orange">
+                  <a
+                    href="tel:0489964270"
+                    aria-label="04 89 96 42 70"
+                    class="hover:text-orange"
+                  >
                     04 89 96 42 70
                   </a>
                 </div>
 
-                <div class="flex justify-center items-center gap-4">
+                <div
+                  class="animate-on-scroll delay-4 flex justify-center items-center gap-4"
+                >
                   <i class="fa-solid fa-envelope"></i>
                   <a
                     href="mailto:contact@lapatinoirelagarde.com"
                     class="hover:text-orange"
+                    aria-label="contact@lapatinoirelagarde.com"
                   >
                     contact@lapatinoirelagarde.com
                   </a>
@@ -1128,7 +1345,7 @@
               </div>
             </div>
             <!-- FORMULAIRE -->
-            <div class="md:w-1/2 w-full">
+            <div class="animate-on-scroll delay-5 md:w-1/2 w-full">
               <div class="flex flex-col gap-6 w-full">
                 <div class="flex flex-col items-start gap-2">
                   <label for="name">Nom</label>
@@ -1153,18 +1370,21 @@
                     class="border-1 w-full p-2 border-gray-600 rounded-lg"
                   ></textarea>
                 </div>
-                <a href="#" class="blue-btn text-center">Envoyer</a>
+                <a href="#" class="blue-btn text-center" aria-label="Envoyer"
+                  >Envoyer</a
+                >
               </div>
             </div>
           </div>
         </div>
         <!-- MAP -->
-        <div class="w-full pt-6">
+        <div class="animate-on-scroll delay-6 w-full pt-6">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2912.162474037092!2d5.997728775505204!3d43.12211297113231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9196c35eb78bf%3A0x420dfe7af0a4ea7a!2sPatinoire%20de%20La%20Garde!5e0!3m2!1sfr!2sfr!4v1774128855803!5m2!1sfr!2sfr"
             class="w-full h-100"
             style="border: 0"
             loading="lazy"
+            title="La Patinoire La Garde Google Maps"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen=""
           ></iframe>
@@ -1173,7 +1393,9 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-custom-black text-white p-6 backdrop-blur-xl">
+    <footer
+      class="scroll-section snap-start bg-custom-black text-white p-6 backdrop-blur-xl"
+    >
       <div
         class="flex md:flex-row flex-col justify-between items-baselin p-6 xl:gap-0 gap-8"
       >
@@ -1181,8 +1403,14 @@
         <div
           class="flex flex-col justify-center lg:items-start items-center gap-4 lg:mb-0 mb-8"
         >
-          <div class="flex justify-center items-center gap-4">
-            <img src="img/logo.jpg" alt="logo" class="h-10 rounded-lg" />
+          <div class="animate-on-scroll flex justify-center items-center gap-4">
+            <img
+              src="img/logo.jpg"
+              alt="logo"
+              class="h-10 rounded-lg aspect-[6/5]"
+              width="48px"
+              height="40px"
+            />
             <a href="#" aria-label="La Patinoire La Garde">
               <div class="font-brand-clamp flex lg:flex-row flex-col lg:gap-2">
                 <h2 class="whitespace-nowrap">La Patinoire</h2>
@@ -1190,15 +1418,28 @@
               </div>
             </a>
           </div>
-          <p class="text-custom-light-grey text-center lg:text-left">
+          <p
+            class="animate-on-scroll delay-1 text-custom-light-grey text-center lg:text-left"
+          >
             L'excellence de la glisse urbaine. <br />Nous redéfinissons les
             standards des loisirs de glace depuis 1986.
           </p>
-          <div class="flex justify-center items-center gap-4">
-            <a class="hover:text-orange cursor-pointer">
-              <i class="fa-brands fa-facebook-f"> </i>
+          <div
+            class="animate-on-scroll delay-2 flex justify-center items-center gap-4"
+          >
+            <a
+              href="https://facebook.com"
+              class="hover:text-orange"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
             </a>
-            <a class="hover:text-orange cursor-pointer">
+
+            <a
+              href="https://instagram.com"
+              class="hover:text-orange"
+              aria-label="Instagram"
+            >
               <i class="fa-brands fa-instagram"></i>
             </a>
           </div>
@@ -1207,7 +1448,9 @@
           class="flex justify-center md:flex-row flex-col md:items-start items-center gap-8 text-center text-custom-light-grey"
         >
           <!-- NAVIGATION -->
-          <div class="flex flex-col justify-center items-center gap-2">
+          <div
+            class="animate-on-scroll delay-3 flex flex-col justify-center items-center gap-2"
+          >
             <p class="uppercase text-orange">Navigation</p>
             <a class="hover:text-orange" aria-label="Événements" href="#events"
               >Événements</a
@@ -1223,14 +1466,21 @@
             >
           </div>
           <!-- NOUS TROUVER -->
-          <div class="flex flex-col justify-center items-center gap-2">
+          <div
+            class="animate-on-scroll delay-4 flex flex-col justify-center items-center gap-2"
+          >
             <p class="uppercase text-orange">Nous trouver</p>
-            <a href="tel:0489964270" class="hover:text-orange">
+            <a
+              href="tel:0489964270"
+              aria-label="04 89 96 42 70"
+              class="hover:text-orange"
+            >
               04 89 96 42 70
             </a>
             <a
               href="mailto:contact@lapatinoirelagarde.com"
               class="hover:text-orange"
+              aria-label="contact@lapatinoirelagarde.com"
             >
               contact@lapatinoirelagarde.com
             </a>
@@ -1241,7 +1491,9 @@
           </div>
         </div>
       </div>
-      <div class="border-t-1 border-gray-700 p-6 lg:pb-6 pb-20">
+      <div
+        class="animate-on-scroll delay-5 border-t-1 border-gray-700 p-6 lg:pb-6 pb-20"
+      >
         <p class="text-center text-custom-light-grey">
           La Patinoire La Garde © 2026
         </p>

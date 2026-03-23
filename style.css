@@ -21,13 +21,13 @@
 /************* GENERAL ***************/
 /*************************************/
 html {
-  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
-/* 
+
 section {
   scroll-snap-align: start;
-} */
+}
 
 body {
   font-family: "Inter", sans-serif;
@@ -61,8 +61,8 @@ a {
 
 /*** TITRES ***/
 .font-h1-clamp {
-  font-size: clamp(32px, 6vw, 120px);
-  line-height: clamp(50px, 6vw, 140px);
+  font-size: clamp(28px, 6vw, 120px);
+  line-height: clamp(40px, 6vw, 140px);
 }
 
 .font-h2-clamp {
@@ -162,9 +162,9 @@ a {
   padding-right: 16px;
 }
 
-/*************************************/
+/**********************************/
 /************* HERO ***************/
-/*************************************/
+/**********************************/
 
 .hero-bg-img {
   background-image:
@@ -190,9 +190,9 @@ a {
   color: transparent;
 }
 
-/*************************************/
+/***********************************************/
 /************* HORAIRES & TARIFS ***************/
-/*************************************/
+/***********************************************/
 
 .tarif-type {
   background-color: var(--color-white);
@@ -202,9 +202,6 @@ a {
   background-color: var(--color-orange);
 }
 
-.bg-white-transparent {
-  background-color: rgba(255, 255, 255, 0.4);
-}
 .tarif-alone {
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
@@ -223,16 +220,8 @@ a {
   font-size: 24px;
 }
 
-.selected-tarif {
-  background-color: var(--color-blue);
-  color: var(--color-white);
-}
 .non-selected-tarif {
   background-color: var(--color-white);
-}
-.recommended {
-  border: 2px solid var(--color-orange);
-  transform: scale(1.03);
 }
 
 /*************************************/
@@ -254,19 +243,6 @@ a {
   background: rgba(255, 255, 255, 0.07);
   border-color: var(--color-blue);
   /* transform: translateY(-10px); */
-}
-
-.glow-blue {
-  filter: drop-shadow(0 0 15px var(--color-blue));
-}
-.glow-orange {
-  filter: drop-shadow(0 0 15px var(--color-orange));
-}
-.glow-green {
-  filter: drop-shadow(0 0 15px var(--color-green));
-}
-.glow-red {
-  filter: drop-shadow(0 0 15px var(--color-red));
 }
 
 .glass-patin-card {
@@ -292,4 +268,104 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+}
+
+/********************************************/
+/************* OPENING STATUS ***************/
+/********************************************/
+
+#status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.open {
+  background: var(--color-green);
+}
+
+.soon {
+  background: var(--color-orange);
+}
+
+.closed {
+  background: var(--color-red);
+}
+
+/****************************************/
+/************* ANIMATIONS ***************/
+/****************************************/
+
+@keyframes iceTrail {
+  0% {
+    opacity: 0;
+    transform: translateX(-250px) skewX(-20deg);
+    filter: blur(8px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(15px) skewX(5deg);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+.ice-element {
+  animation: iceTrail 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes fade-blur {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-blur {
+  animation: fade-blur 0.9s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+.delay-2 {
+  animation-delay: 1s;
+}
+.delay-3 {
+  animation-delay: 1.5s;
+}
+.delay-4 {
+  animation-delay: 2s;
+}
+.delay-5 {
+  animation-delay: 2.5s;
+}
+.delay-6 {
+  animation-delay: 3s;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.visible {
+  animation: iceTrail 0.9s forwards;
 }
