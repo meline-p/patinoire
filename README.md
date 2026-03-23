@@ -8,4 +8,4 @@ Patinage libre, clubs et événements toute l’année.
 
 [Visitez le site de la patinoire](https://meline-p.github.io/patinoire/)
 
-![img](https://meline-p.github.io/patinoire/img/apres/patinoire.png)
+![img](https://meline-p.github.io/patinoire/img/apres/patinoire-light.png)
